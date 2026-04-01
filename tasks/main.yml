@@ -1,11 +1,9 @@
 ---
-
 - name: Ensure flatpak is available
   ansible.builtin.package:
     name: flatpak
     state: present
   become: true
-  become_user: root
 
 - name: Enable the flathub remote in the system installation
   community.general.flatpak_remote:
@@ -14,7 +12,6 @@
     enabled: true
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
   become: true
-  become_user: root
 
 - name: Install PrusaSlicer
   community.general.flatpak:
@@ -22,4 +19,3 @@
     state: present
     remote: flathub
   become: true
-  become_user: root
